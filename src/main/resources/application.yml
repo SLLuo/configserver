@@ -1,0 +1,58 @@
+server:
+  port: 7601
+#endpoints:
+#  restart:
+#    enabled: true
+#  shutdown:
+#    enabled: true
+spring:
+  application:
+   name: configserver #为你的应用起个名字，该名字将注册到eureka注册中心
+  session:
+    store-type: hash_map
+  # mysql 属性配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/rtip?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate.ddl-auto: update
+#  redis:
+#    host: 127.0.0.1
+#  cloud:
+#    zookeeper:
+#      enabled: true
+#      connect-string: 127.0.0.1:2181
+#      config:
+#        enabled: true
+#        watcher:
+#          enabled: false
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.newtouch.rtip.configserver.model
+  configuration:
+    use-column-label: true
+  #typeHandlersPackage: com.newtouch.rtip.commons.mybatis.handler
+
+#eureka:
+#  instance:
+#    statusPageUrlPath: ${management.context-path}/info
+#    healthCheckUrlPath: ${management.context-path}/health
+#    leaseRenewalIntervalInSeconds: 10 #心跳间隔
+#    prefer-ip-address: true
+#    metadata-map:
+#      cluster: MAIN
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/ #去哪里注册，eureka服务地址
+#ribbon:
+#  eureka:
+#    enabled: true
+#  ConnectTimeout: 3000
+#  ReadTimeout: 60000
+#  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+  #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.WeightedResponseTimeRule
